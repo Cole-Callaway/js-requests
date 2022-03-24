@@ -1,7 +1,9 @@
 ////////////////////////////////////////////////
 //THE TEST SERVER IS RUNNING ON LOCALHOST:3000//
 ////////////////////////////////////////////////
+
 // console.log('connected')
+const baseURL = "http://localhost:4000";
 // PROBLEM 1
 /*
     In the index.html file in this folder there is a button with an id of 'say-hello-button'!
@@ -49,7 +51,9 @@ sayHelloButton.addEventListener("mouseout", () => {
 
 // DO NOT EDIT FUNCTION
 const sayHello = () => {
-  axios.get("http://localhost:3000/say-hello").then((res) => {
+  axios
+  .get(baseURL + "/say-hello")
+  .then((res) => {
     let helloText = document.getElementById("hello-text");
     helloText.style.display = "block";
     helloText.style.backgroundColor = "green";
@@ -59,7 +63,7 @@ const sayHello = () => {
 // DO NOT EDIT FUNCTION
 
 // CODE HERE
-
+sayHelloButton.addEventListener("click", sayHello);
 // PROBLEM 5
 /*
     Now that we have attached a few event listeners why dont we try adding a request? 
@@ -72,7 +76,11 @@ const sayHello = () => {
 */
 
 const ohMy = () => {
-  // YOUR CODE HERE
+  axios
+  .get(baseURL + '/animals')
+  .then((res) => {
+    res.data;
+  });
 };
 
 document.getElementById("animals-button").addEventListener("click", ohMy);
@@ -91,9 +99,18 @@ document.getElementById("animals-button").addEventListener("click", ohMy);
 */
 
 const repeatMyParam = () => {
-  //YOUR CODE HERE
-};
+  axios
+  .get( baseURL + "/someparam")
+  .then((res) => {
+    res.data;
 
+    let repeatTxt = document.getElementById("repeat-text");
+    repeatTxt.textContent = res.data;
+  });
+};
+document
+  .getElementById("repeat-button")
+  .addEventListener("click", repeatMyParam);
 // PROBLEM 7
 /*
     Now that we have the response data, let's add it to our web page! 
