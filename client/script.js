@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////
 
 // console.log('connected')
-const baseURL = "http://localhost:4000";
+const baseURL = "http://localhost:3000";
 // PROBLEM 1
 /*
     In the index.html file in this folder there is a button with an id of 'say-hello-button'!
@@ -103,14 +103,13 @@ const repeatMyParam = () => {
   .get( baseURL + "/someparam")
   .then((res) => {
     res.data;
+});
 
     let repeatTxt = document.getElementById("repeat-text");
     repeatTxt.textContent = res.data;
-  });
 };
-document
-  .getElementById("repeat-button")
-  .addEventListener("click", repeatMyParam);
+
+document.getElementById("repeat-button").addEventListener("click", repeatMyParam);
 // PROBLEM 7
 /*
     Now that we have the response data, let's add it to our web page! 
