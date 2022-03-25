@@ -4,10 +4,6 @@
 
 
 
-
-
-
-
 // console.log('connected')
 const baseURL = "http://localhost:3000";
 // PROBLEM 1
@@ -57,9 +53,7 @@ sayHelloButton.addEventListener("mouseout", () => {
 
 // DO NOT EDIT FUNCTION
 const sayHello = () => {
-  axios
-  .get(baseURL + "/say-hello")
-  .then((res) => {
+  axios.get(baseURL + "/say-hello").then((res) => {
     let helloText = document.getElementById("hello-text");
     helloText.style.display = "block";
     helloText.style.backgroundColor = "green";
@@ -82,14 +76,14 @@ sayHelloButton.addEventListener("click", sayHello);
 */
 
 const ohMy = () => {
-  axios
-  .get(baseURL + '/animals')
-  .then((res) => {
+  axios.get(baseURL + "/animals").then((res) => {
     res.data;
   });
 };
 
-document.getElementById("animals-button").addEventListener("click", ohMy);
+document.getElementById("animals-button").addEventListener("click", ohMy)
+ 
+
 
 // PROBLEM 6
 /*
@@ -105,16 +99,18 @@ document.getElementById("animals-button").addEventListener("click", ohMy);
 */
 
 const repeatMyParam = () => {
-  axios
-  // .get('http://localhost:3000/someparam')
-  .get( baseURL + "/repeat/someparam")
-  .then(res => res.data);
+  const data = axios
+    // .get('http://localhost:3000/someparam')
+    .get(baseURL + "/repeat/someparam")
+    .then((res) => res.data);
 
-    let repeatTxt = document.getElementById("repeat-text");
-    repeatTxt.textContent = res.data;
+  let repeatTxt = document.getElementById("repeat-text");
+  repeatTxt.textContent = data;
+  repeatTxt.style.display = "block";
 };
 
-document.getElementById("repeat-button").addEventListener("click", repeatMyParam);
+document.getElementById("repeat-button")
+  .addEventListener("click", repeatMyParam);
 // PROBLEM 7
 /*
     Now that we have the response data, let's add it to our web page! 
@@ -136,14 +132,14 @@ document.getElementById("repeat-button").addEventListener("click", repeatMyParam
 // CODE HERE
 const querySender = () => {
   axios
-  .get(baseURL + '/query-test/?=thisIsAQuery')
-  .then(res => console.log(res))
-}
-document.getElementById('query-button').addEventListener('click', querySender)
+    .get(baseURL + "/query-test/?hello=isIsAQuery")
+    .then((res) => console.log(res));
+};
+document.getElementById("query-button").addEventListener("click", querySender);
 ////////////////
 //INTERMEDIATE//
 ////////////////
-axios
+
 // PROBLEM 9
 /* 
     Back in the ohMy function on Problem 5, replace the console log in the promise's callback with a for loop that loops over res.data. 
