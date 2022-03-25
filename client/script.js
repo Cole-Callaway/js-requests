@@ -2,6 +2,12 @@
 //THE TEST SERVER IS RUNNING ON LOCALHOST:3000//
 ////////////////////////////////////////////////
 
+
+
+
+
+
+
 // console.log('connected')
 const baseURL = "http://localhost:3000";
 // PROBLEM 1
@@ -100,10 +106,9 @@ document.getElementById("animals-button").addEventListener("click", ohMy);
 
 const repeatMyParam = () => {
   axios
-  .get( baseURL + "/someparam")
-  .then((res) => {
-    res.data;
-});
+  // .get('http://localhost:3000/someparam')
+  .get( baseURL + "/repeat/someparam")
+  .then(res => res.data);
 
     let repeatTxt = document.getElementById("repeat-text");
     repeatTxt.textContent = res.data;
@@ -129,11 +134,16 @@ document.getElementById("repeat-button").addEventListener("click", repeatMyParam
 */
 
 // CODE HERE
-
+const querySender = () => {
+  axios
+  .get(baseURL + '/query-test/?=thisIsAQuery')
+  .then(res => console.log(res))
+}
+document.getElementById('query-button').addEventListener('click', querySender)
 ////////////////
 //INTERMEDIATE//
 ////////////////
-
+axios
 // PROBLEM 9
 /* 
     Back in the ohMy function on Problem 5, replace the console log in the promise's callback with a for loop that loops over res.data. 
